@@ -22,6 +22,11 @@ inputs:
     required: false
     type: string
     default: "3.x"
+  build_command:
+    description: "command used to build python package"
+    required: false
+    type: string
+    default: python -m build"
 runs:
   using: "composite"
   steps:
@@ -48,5 +53,5 @@ runs:
         TWINE_USERNAME: ${{ inputs.pypi_username }}
         TWINE_PASSWORD: ${{ inputs.pypi_password }}
       run: |
-        python -m build
+        ${{ inputs.build_command }}
         twine upload dist/*
