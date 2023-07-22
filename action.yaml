@@ -1,9 +1,19 @@
-name: actions_python_coveralls
+name: actions_python_pypi
 description: A Github action for building a python package and publishing to pypi
 branding:
   icon: 'check-circle'
   color: 'green'
 inputs:
+  build_command:
+    description: "command used to build python package"
+    required: false
+    type: string
+    default: python -m build"
+  pip_install_command: 
+    description: "command used to install python dependancies"
+    required: false
+    type: string
+    default: "pip install build setuptools setuptools_scm wheel twine"
   pypi_username:
     description: "pypi username"
     required: true
@@ -12,21 +22,12 @@ inputs:
     description: "pypi password"
     required: true
     type: string
-  pip_install_command: 
-    description: "command used to install python dependancies"
-    required: false
-    type: string
-    default: "pip install build setuptools setuptools_scm wheel twine"
   python_version:
     description: "version of python to run action with"
     required: false
     type: string
     default: "3.x"
-  build_command:
-    description: "command used to build python package"
-    required: false
-    type: string
-    default: python -m build"
+
 runs:
   using: "composite"
   steps:
