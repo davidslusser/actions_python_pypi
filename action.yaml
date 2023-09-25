@@ -26,7 +26,7 @@ inputs:
     description: "command used to build python package"
     required: false
     type: string
-    default: python -m build"
+    default: "python -m build"
 runs:
   using: "composite"
   steps:
